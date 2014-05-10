@@ -44,7 +44,7 @@ class FireGento_MultiStock_Block_Adminhtml_Stock_Tab extends Mage_Adminhtml_Bloc
      */
     public function getTabLabel()
     {
-        return $this->__('Multiple inventories');
+        return $this->__('Multiple Inventories');
     }
 
     /**
@@ -52,7 +52,7 @@ class FireGento_MultiStock_Block_Adminhtml_Stock_Tab extends Mage_Adminhtml_Bloc
      */
     public function getTabTitle()
     {
-        return $this->__('Multiple inventories');
+        return $this->__('Multiple Inventories');
     }
 
     /**

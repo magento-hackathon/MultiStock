@@ -39,6 +39,7 @@ class FireGento_MultiStock_Block_Adminhtml_Stock_Grid extends Mage_Adminhtml_Blo
         $this->setDefaultSort('stock_id');
         $this->setDefaultDir('ASC');
         $this->setUseAjax(true);
+        $this->setFilterVisibility(false);
     }
 
     /**

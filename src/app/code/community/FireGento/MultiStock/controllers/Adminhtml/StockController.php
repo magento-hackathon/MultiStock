@@ -43,6 +43,4 @@ class FireGento_MultiStock_Adminhtml_StockController extends Mage_Adminhtml_Cont
     {
 
     }
-
-
 }
