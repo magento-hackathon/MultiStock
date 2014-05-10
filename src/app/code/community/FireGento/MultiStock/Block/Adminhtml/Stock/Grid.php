@@ -30,7 +30,7 @@ class FireGento_MultiStock_Block_Adminhtml_Stock_Grid extends Mage_Adminhtml_Blo
 {
 
     /**
-     *
+     * a constructor
      */
     public function __construct()
     {
@@ -42,6 +42,8 @@ class FireGento_MultiStock_Block_Adminhtml_Stock_Grid extends Mage_Adminhtml_Blo
     }
 
     /**
+     * Get the current product.
+     *
      * @return Mage_Catalog_Model_Product
      */
     protected function getProduct()
@@ -50,12 +52,13 @@ class FireGento_MultiStock_Block_Adminhtml_Stock_Grid extends Mage_Adminhtml_Blo
     }
 
     /**
+     * Prepare the collection.
+     *
      * @return $this
      */
     protected function _prepareCollection()
     {
-        $tmpArray        = array();
-        $stockCollection = Mage::getModel('FireGento_MultiStock/stock')->getCollection();
+        $stockCollection = Mage::getModel('firegento_multistock/stock')->getCollection();
         /* @var $stockCollection FireGento_MultiStock_Model_Resource_Stock_Collection */
         $stockCollection->excludeDefaultStock();
         $stockCollection->joinStockItemsForProduct($this->getProduct());
@@ -63,86 +66,51 @@ class FireGento_MultiStock_Block_Adminhtml_Stock_Grid extends Mage_Adminhtml_Blo
             $dir = strtoupper($this->getRequest()->getParam('dir'));
             $stockCollection->setOrder($this->getRequest()->getParam('sort'), $dir);
         }
-        foreach ($stockCollection as &$_stock) {
-            /* @var $retailer HDNET_Retailer_Model_Retailer */
-            $retailer = Mage::getModel('hdnet_retailer/retailer')->loadByStockId($_stock->getStockId());
-
-            if ($retailer->getEntityId()) {
-                $productOption = Mage::getModel('hdnet_retailer/productoption')->getOptionsForProduct(
-                    $retailer, $this->getProduct()
-                );
-                $_stock->setData('bringin', $productOption->getDataSetDefault('bringin', '0'));
-                $_stock->setData('phone', $productOption->getDataSetDefault('phone', '0'));
-                $_stock->setData('home', $productOption->getDataSetDefault('home', '0'));
-            }
-        }
         $this->setCollection($stockCollection);
-        $return = parent::_prepareCollection();
 
-        return $return;
+        return parent::_prepareCollection();
     }
 
     /**
+     * Prepare the columns.
+     *
      * @return Mage_Adminhtml_Block_Widget_Grid
      */
     protected function _prepareColumns()
     {
-        $helper = Mage::helper('FireGento_MultiStock_adminhtml');
         $this->addColumn(
-            'stock_id', array('header' => $helper->__('Stock ID'), 'index' => 'stock_id', 'column_css_class' => 'id',
+            'stock_id', array('header' => $this->__('Stock ID'), 'index' => 'stock_id', 'column_css_class' => 'id',
                               'width'  => '60px'
-
             )
         );
 
         $this->addColumn(
             'item_id',
-            array('header' => $helper->__('Stock Item ID'), 'index' => 'item_id', 'column_css_class' => 'item_id',
+            array('header' => $this->__('Stock Item ID'), 'index' => 'item_id', 'column_css_class' => 'item_id',
                   'width'  => '60px')
         );
 
         $this->addColumn(
-            'stock_name', array('header' => $helper->__('Stock Name'), 'index' => 'stock_name')
+            'stock_name', array('header' => $this->__('Stock Name'), 'index' => 'stock_name')
         );
 
         $this->addColumn(
-            'qty', array('header' => $helper->__('Qty'), 'type' => 'number', 'validate_class' => 'validate-number',
-                         'index'  => 'qty', 'column_css_class' => 'qty', 'editable' => false)
+            'qty', array('header' => $this->__('Qty'), 'type' => 'number', 'validate_class' => 'validate-number',
+                         'index'  => 'qty', 'column_css_class' => 'qty', 'editable' => true)
         );
 
         $this->addColumn(
             'is_in_stock',
-            array('header' => $helper->__('Is In Stock'), 'type' => 'checkbox', 'column_css_class' => 'is_in_stock',
+            array('header' => $this->__('Is In Stock'), 'type' => 'checkbox', 'column_css_class' => 'is_in_stock',
                   'index'  => 'is_in_stock', 'value' => '1', 'sortable' => false, 'editable' => false)
         );
-        $this->addColumn(
-            'bringin',
-            array('header'   => $helper->__('BringIn'), 'index' => 'bringin', 'editable' => false, 'value' => '1',
-                  'width'    => '60px', 'renderer' => 'FireGento_MultiStock_Block_Adminhtml_Renderer_YesnoRenderer',
-                  'sortable' => false)
-        );
-
-        $this->addColumn(
-            'home', array('header'   => $helper->__('Zu Hause'), 'index' => 'home', 'editable' => false, 'value' => '1',
-                          'width'    => '60px',
-                          'renderer' => 'FireGento_MultiStock_Block_Adminhtml_Renderer_YesnoRenderer',
-                          'sortable' => false
-
-            )
-        );
-
-        $this->addColumn(
-            'phone', array('header'   => $helper->__('Phone'), 'index' => 'phone', 'editable' => false, 'value' => '1',
-                           'width'    => '60px',
-                           'renderer' => 'FireGento_MultiStock_Block_Adminhtml_Renderer_YesnoRenderer',
-                           'sortable' => false)
-        );
-
 
         return parent::_prepareColumns();
     }
 
     /**
+     * The current grid url.
+     *
      * @return string
      */
     public function getGridUrl()

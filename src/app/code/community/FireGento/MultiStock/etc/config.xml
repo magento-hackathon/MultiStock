@@ -61,7 +61,7 @@
         <layout>
             <updates>
                 <multistocks>
-                    <file>multistocks.xml</file>
+                    <file>firegento_multistock.xml</file>
                 </multistocks>
             </updates>
         </layout>

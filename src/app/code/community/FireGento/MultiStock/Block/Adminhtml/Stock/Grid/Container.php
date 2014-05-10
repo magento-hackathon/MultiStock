@@ -34,37 +34,35 @@ class FireGento_MultiStock_Block_Adminhtml_Stock_Grid_Container extends Mage_Adm
      */
     public function __construct()
     {
-        $this->_blockGroup = 'FireGento_MultiStock_adminhtml';
-        $this->_controller = 'stock';
-        $this->_headerText = $this->helper('FireGento_MultiStock_adminhtml')->__(
-            'Stock Information for %s', $this->getProduct()->getName()
-        );
+        $this->_blockGroup = 'firegento_multistock';
+        $this->_controller = 'adminhtml_stock';
+        $this->_headerText = $this->__('Stock information');
 
         parent::__construct();
 
         $this->_removeButton('add');
 
         $this->_addButton(
-            'setAllNotInStock', array('label' => $this->helper('FireGento_MultiStock_adminhtml')->__(
-                    'Set All as not in stock'
-                ), 'onclick'                  => 'stock_gridJsObject.updateStock(\'' . $this->jsQuoteEscape(
+            'setAllNotInStock', array('label' => $this->__(
+                    'Set all as not in stock'
+                ), 'onclick'                  => "stock_gridJsObject.updateStock('" . $this->jsQuoteEscape(
                     $this->getUpdateAllUrl(array('setInStock' => 0))
-                ) . '\');', 'class'           => 'update',)
+                ) . "');", 'class'            => 'update')
         );
 
         $this->_addButton(
-            'setAllInStock',
-            array('label'                 => $this->helper('FireGento_MultiStock_adminhtml')->__('Set All as in stock'),
-                  'onclick'               => 'stock_gridJsObject.updateStock(\'' . $this->jsQuoteEscape(
-                          $this->getUpdateAllUrl(array('setInStock' => 1))
-                      ) . '\');', 'class' => 'update',)
+            'setAllInStock', array('label'                => $this->__('Set all as in stock'),
+                                   'onclick'              => "stock_gridJsObject.updateStock('" . $this->jsQuoteEscape(
+                                           $this->getUpdateAllUrl(array('setInStock' => 1))
+                                       ) . "');", 'class' => 'update')
         );
 
         $this->_addButton(
-            'update', array('label'               => $this->helper('FireGento_MultiStock_adminhtml')->__('Save stocks'),
-                            'onclick'             =>
-                                'stock_gridJsObject.updateStock(\'' . $this->jsQuoteEscape($this->getUpdateUrl())
-                                . '\');', 'class' => 'update',)
+            'update', array('label'              => $this->__(
+                    'Save stocks'
+                ), 'onclick'                     =>
+                                "stock_gridJsObject.updateStock('" . $this->jsQuoteEscape($this->getUpdateUrl())
+                                . "');", 'class' => 'update')
         );
 
     }

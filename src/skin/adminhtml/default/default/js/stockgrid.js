@@ -1,4 +1,3 @@
-<?php
 /**
  * This file is part of a FireGento e.V. module.
  *
@@ -10,36 +9,30 @@
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
  *
- * PHP version 5
- *
  * @category  FireGento
  * @package   FireGento_MultiStock
  * @author    FireGento Team <team@firegento.com>
  * @copyright 2014 FireGento Team (http://www.firegento.com)
  * @license   http://opensource.org/licenses/gpl-3.0 GNU General Public License, version 3 (GPLv3)
  */
-
-/**
- * Helper Class
- *
- * @category FireGento
- * @package  FireGento_MultiStock
- * @author   FireGento Team <team@firegento.com>
+/*
+ * Extends varienGrid (js/grid.js) with a a method to submit stock data
  */
-class FireGento_MultiStock_Model_Stock_Item extends Mage_CatalogInventory_Model_Stock_Item
-{
-    /**
-     * Get the stock id.
-     *
-     * @return mixed
-     */
-    public function getStockId()
-    {
-        if (!$this->hasData('stock_id')) {
-            $this->setData('stock_id', Mage_CatalogInventory_Model_Stock::DEFAULT_STOCK_ID);
-        }
+varienGrid.prototype.updateStock = function(url) {
+    this.reloadParams = this.getGridData();
+    this.reload(url);
+    this.reloadParams = false;
+};
 
-        return $this->getData('stock_id');
-    }
+varienGrid.prototype.getGridData = function() {
+    var data = {};
+    $$('#stock_grid_table tbody tr').each(function(tr,index) {
+        tr = $(tr);
+        var id = 1 * tr.down('td.id').innerHTML;
+        data['data['+id+'][item_id]'] = tr.down('td.item_id').innerHTML.strip();
+        data['data['+id+'][qty]'] = 1 * tr.down('td.qty').down('input').value;
+        data['data['+id+'][is_in_stock]'] = 1 * tr.down('td.is_in_stock').down('input').checked;
+    });
+    return data;
+};
 
-}

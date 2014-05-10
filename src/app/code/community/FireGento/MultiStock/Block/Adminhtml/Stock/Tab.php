@@ -44,7 +44,7 @@ class FireGento_MultiStock_Block_Adminhtml_Stock_Tab extends Mage_Adminhtml_Bloc
      */
     public function getTabLabel()
     {
-        return $this->__('Lagerverwaltung - Stores');
+        return $this->__('Multiple inventories');
     }
 
     /**
@@ -52,7 +52,7 @@ class FireGento_MultiStock_Block_Adminhtml_Stock_Tab extends Mage_Adminhtml_Bloc
      */
     public function getTabTitle()
     {
-        return $this->__('Lagerverwaltung für die Stores vor Ort');
+        return $this->__('Multiple inventories');
     }
 
     /**

@@ -91,12 +91,12 @@ class FireGento_MultiStock_StockController extends Mage_Adminhtml_Controller_Act
                 /* @var $stockItem FireGento_MultiStock_Model_Stock_Item */
 
                 if ($newData['item_id'] && is_numeric($newData['item_id'])) {
-                    $stockItem->load((int)$newData['item_id']);
+                    $stockItem->load($newData['item_id']);
                 }
                 $stockItem->setProduct($product);
                 $stockItem->addData(
-                    array('stock_id'    => $stock->getId(), 'qty' => (int)$newData['qty'],
-                          'is_in_stock' => (int)$newData['is_in_stock'])
+                    array('stock_id'    => $stock->getId(), 'qty' => $newData['qty'],
+                          'is_in_stock' => $newData['is_in_stock'])
                 );
                 $stockItem->save();
             }
@@ -131,10 +131,8 @@ class FireGento_MultiStock_StockController extends Mage_Adminhtml_Controller_Act
                 $stockItem->setStockId($stock->getId());
             }
             if ($inStock) {
-                $stockItem->setQty('100');
                 $stockItem->setIsInStock(1);
             } else {
-                $stockItem->setQty('0');
                 $stockItem->setIsInStock(0);
             }
 
