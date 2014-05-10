@@ -28,22 +28,23 @@
         </reference>
     </adminhtml_catalog_product_edit>
 
-    <stocks_stock_index>
-        <update handle="stocks_stock_ajax" />
+    <adminhtml_multistock_index>
+        <update handle="adminhtml_multistock_ajax" />
         <reference name="root">
             <block type="firegento_multistock/adminhtml_stock_grid_container" name="stock.grid_container" />
         </reference>
-    </stocks_stock_index>
+    </adminhtml_multistock_index>
 
-    <stocks_stock_grid>
-        <update handle="stocks_stock_ajax" />
+    <adminhtml_multistock_grid>
+        <update handle="adminhtml_multistock_ajax" />
         <reference name="root">
             <block type="firegento_multistock/adminhtml_stock_grid" name="stock.grid" />
         </reference>
-    </stocks_stock_grid>
-    <stocks_stock_ajax>
+    </adminhtml_multistock_grid>
+
+    <adminhtml_multistock_ajax>
         <remove name="right"/>
         <remove name="left"/>
         <block type="core/text_list" name="root" output="toHtml" />
-    </stocks_stock_ajax>
+    </adminhtml_multistock_ajax>
 </layout>

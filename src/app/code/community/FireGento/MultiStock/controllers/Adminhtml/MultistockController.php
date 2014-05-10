@@ -26,7 +26,7 @@
  * @package  FireGento_MultiStock
  * @author   FireGento Team <team@firegento.com>
  */
-class FireGento_MultiStock_StockController extends Mage_Adminhtml_Controller_Action
+class FireGento_MultiStock_Adminhtml_MultistockController extends Mage_Adminhtml_Controller_Action
 {
     /**
      * Initialize product from request parameters
@@ -95,7 +95,8 @@ class FireGento_MultiStock_StockController extends Mage_Adminhtml_Controller_Act
                 }
                 $stockItem->setProduct($product);
                 $stockItem->addData(
-                    array('stock_id'    => $stock->getId(), 'qty' => $newData['qty'],
+                    array('stock_id'    => $stock->getId(),
+                          'qty'         => $newData['qty'],
                           'is_in_stock' => $newData['is_in_stock'])
                 );
                 $stockItem->save();

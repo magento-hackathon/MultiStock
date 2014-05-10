@@ -65,16 +65,33 @@
                 </multistocks>
             </updates>
         </layout>
+        <menu>
+            <catalog translate="title" module="catalog">
+                <children>
+                    <multistock translate="title" module="firegento_multistock">
+                        <title>MultiStock</title>
+                        <sort_order>100</sort_order>
+                        <children>
+                            <stocks translate="title" module="firegento_multistock">
+                                <title>Stocks</title>
+                                <action>adminhtml/multistock/index</action>
+                                <sort_order>10</sort_order>
+                            </stocks>
+                        </children>
+                    </multistock>
+                </children>
+            </catalog>
+        </menu>
     </adminhtml>
     <admin>
         <routers>
-            <stocks>
-                <use>admin</use>
+            <adminhtml>
                 <args>
-                    <module>FireGento_MultiStock</module>
-                    <frontName>stocks</frontName>
+                    <modules>
+                        <firegento_multistock before="Mage_Adminhtml">FireGento_MultiStock_Adminhtml</firegento_multistock>
+                    </modules>
                 </args>
-            </stocks>
+            </adminhtml>
         </routers>
     </admin>
 </config>

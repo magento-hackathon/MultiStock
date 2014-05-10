@@ -78,7 +78,7 @@ class FireGento_MultiStock_Block_Adminhtml_Stock_Tab extends Mage_Adminhtml_Bloc
      */
     public function getTabUrl()
     {
-        return $this->getUrl('stocks/stock/index', array('_current' => true));
+        return $this->getUrl('adminhtml/multistock/index', array('_current' => true));
     }
 
     /**
