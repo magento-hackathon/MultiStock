@@ -81,29 +81,29 @@ class FireGento_MultiStock_Block_Adminhtml_Stock_Grid extends Mage_Adminhtml_Blo
     {
         $this->addColumn(
             'stock_id', array('header' => $this->__('Stock ID'), 'index' => 'stock_id', 'column_css_class' => 'id',
-                              'width'  => '60px'
-            )
+                              'width'  => '60px', 'sortable' => false)
         );
 
         $this->addColumn(
             'item_id',
             array('header' => $this->__('Stock Item ID'), 'index' => 'item_id', 'column_css_class' => 'item_id',
-                  'width'  => '60px')
+                  'width'  => '60px', 'sortable' => false)
         );
 
         $this->addColumn(
-            'stock_name', array('header' => $this->__('Stock Name'), 'index' => 'stock_name')
+            'stock_name', array('header' => $this->__('Stock Name'), 'index' => 'stock_name', 'sortable' => false)
         );
 
         $this->addColumn(
             'qty', array('header' => $this->__('Qty'), 'type' => 'number', 'validate_class' => 'validate-number',
-                         'index'  => 'qty', 'column_css_class' => 'qty', 'editable' => true)
+                         'index'  => 'qty', 'column_css_class' => 'qty', 'editable' => true, 'sortable' => false)
         );
 
         $this->addColumn(
             'is_in_stock',
-            array('header' => $this->__('Is In Stock'), 'type' => 'checkbox', 'column_css_class' => 'is_in_stock',
-                  'index'  => 'is_in_stock', 'value' => '1', 'sortable' => false, 'editable' => false)
+            array('header'   => $this->__('Is In Stock'), 'type' => 'checkbox', 'column_css_class' => 'is_in_stock',
+                  'index'    => 'is_in_stock', 'value' => '1', 'sortable' => false, 'editable' => false,
+                  'sortable' => false)
         );
 
         return parent::_prepareColumns();
