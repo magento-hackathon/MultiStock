@@ -1,6 +1,9 @@
 FireGento MultiStock
 ====================
 
+FireGento MultiStock will give you more than one stock for each product. 
+The catalog product backend will show you the different stocks and provides the possibility to modify
+each of the values.
 
 Developer
 ---------
