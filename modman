@@ -1,2 +1,4 @@
-src/app/code/community/FireGento/MultiStock/		app/code/community/FireGento/MultiStock/
-src/app/etc/modules/FireGento_MultiStock.xml		app/etc/modules/FireGento_MultiStock.xml
+src/app/code/community/FireGento/MultiStock/								app/code/community/FireGento/MultiStock/
+src/app/etc/modules/FireGento_MultiStock.xml								app/etc/modules/FireGento_MultiStock.xml
+src/app/design/adminhtml/default/default/layout/firegento_multistock.xml	app/design/adminhtml/default/default/layout/firegento_multistock.xml 
+src/skin/adminhtml/default/default/js/stockgrid.js							skin/adminhtml/default/default/js/stockgrid.js 

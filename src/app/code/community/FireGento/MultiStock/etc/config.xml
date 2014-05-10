@@ -21,19 +21,19 @@
                     <stock_item_collection>FireGento_MultiStock_Model_Resource_Stock_Item_Collection</stock_item_collection>
                 </rewrite>
             </cataloginventory_resource>
-            <FireGento_MultiStock>
+            <firegento_multistock>
                 <class>FireGento_MultiStock_Model</class>
-            </FireGento_MultiStock>
+            </firegento_multistock>
         </models>
         <blocks>
-            <FireGento_MultiStock_adminhtml>
-                <class>FireGento_MultiStock_Block_Adminhtml</class>
-            </FireGento_MultiStock_adminhtml>
+            <firegento_multistock>
+                <class>FireGento_MultiStock_Block</class>
+            </firegento_multistock>
         </blocks>
         <helpers>
-            <FireGento_MultiStock_adminhtml>
+            <firegento_multistock>
                 <class>FireGento_MultiStock_Helper</class>
-            </FireGento_MultiStock_adminhtml>
+            </firegento_multistock>
         </helpers>
         <resources>
             <multistock_setup>
@@ -50,7 +50,7 @@
             <prepare_catalog_product_index_select>
                 <observers>
                     <multistock_price_index>
-                        <class>FireGento_MultiStock/observer</class>
+                        <class>firegento_multistock/observer</class>
                         <method>prepareCatalogProductIndexSelect</method>
                     </multistock_price_index>
                 </observers>
