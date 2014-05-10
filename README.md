@@ -5,6 +5,10 @@ FireGento MultiStock will give you more than one stock for each product.
 The catalog product backend will show you the different stocks and provides the possibility to modify
 each of the values.
 
+Contribution
+------------
+* We use git flow as our branching model. Please use always the develop branch to do pull requests.
+
 Developer
 ---------
 FireGento Team
