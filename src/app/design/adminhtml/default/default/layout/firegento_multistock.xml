@@ -24,21 +24,21 @@
             <action method="addItem"><type>skin_js</type><name>js/stockgrid.js</name></action>
         </reference>
         <reference name="product_tabs">
-            <action method="addTab"><name>stocks</name><block>firegento_multistock/adminhtml_stock_tab</block></action>
+            <action method="addTab"><name>stocks</name><block>firegento_multistock/adminhtml_multistock_tab</block></action>
         </reference>
     </adminhtml_catalog_product_edit>
 
     <adminhtml_multistock_index>
         <update handle="adminhtml_multistock_ajax" />
         <reference name="root">
-            <block type="firegento_multistock/adminhtml_stock_grid_container" name="stock.grid_container" />
+            <block type="firegento_multistock/adminhtml_multistock_grid_container" name="stock.grid_container" />
         </reference>
     </adminhtml_multistock_index>
 
     <adminhtml_multistock_grid>
         <update handle="adminhtml_multistock_ajax" />
         <reference name="root">
-            <block type="firegento_multistock/adminhtml_stock_grid" name="stock.grid" />
+            <block type="firegento_multistock/adminhtml_multistock_grid" name="stock.grid" />
         </reference>
     </adminhtml_multistock_grid>
 
