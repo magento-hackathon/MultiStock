@@ -20,33 +20,30 @@
  */
 
 /**
- * Helper Class
+ * Tab Block
  *
  * @category FireGento
  * @package  FireGento_MultiStock
  * @author   FireGento Team <team@firegento.com>
  */
-class FireGento_MultiStock_Helper_Data extends Mage_Core_Helper_Data
+class FireGento_MultiStock_Block_Adminhtml_Stock_Edit_Form extends Mage_Adminhtml_Block_Widget_Form
 {
-    const CURRENT_STOCK = 'current_stock';
-
     /**
-     * Get the current stock stored in registry.
-     *
-     * @return mixed
+     * @return Mage_Adminhtml_Block_Widget_Form the form container
      */
-    public function getCurrentStock()
+    protected function _prepareForm()
     {
-        return Mage::registry(self::CURRENT_STOCK);
-    }
+        $form = new Varien_Data_Form(
+            array(
+            'id' => 'edit_form',
+            'action' => $this->getUrl('*/*/save', array('stock_id' => $this->getRequest()->getParam('stock_id'))),
+            'method' => 'post',
+            'enctype' => 'multipart/form-data',
+            )
+        );
+        $form->setUseContainer(true);
+        $this->setForm($form);
 
-    /**
-     * Set the given stock in registry.
-     *
-     * @param Mage_CatalogInventory_Model_Stock $stock the stock to store
-     */
-    public function setCurrentStock(Mage_CatalogInventory_Model_Stock $stock)
-    {
-        Mage::register(self::CURRENT_STOCK, $stock);
+        return parent::_prepareForm();
     }
 }

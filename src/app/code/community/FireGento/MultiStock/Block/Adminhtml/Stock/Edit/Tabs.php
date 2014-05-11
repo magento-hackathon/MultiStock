@@ -20,33 +20,21 @@
  */
 
 /**
- * Helper Class
+ * Tab Block
  *
  * @category FireGento
  * @package  FireGento_MultiStock
  * @author   FireGento Team <team@firegento.com>
  */
-class FireGento_MultiStock_Helper_Data extends Mage_Core_Helper_Data
+class FireGento_MultiStock_Block_Adminhtml_Stock_Edit_Tabs extends Mage_Adminhtml_Block_Widget_Tabs
 {
-    const CURRENT_STOCK = 'current_stock';
-
     /**
-     * Get the current stock stored in registry.
-     *
-     * @return mixed
+     * Class Constructor
      */
-    public function getCurrentStock()
+    public function __construct()
     {
-        return Mage::registry(self::CURRENT_STOCK);
-    }
-
-    /**
-     * Set the given stock in registry.
-     *
-     * @param Mage_CatalogInventory_Model_Stock $stock the stock to store
-     */
-    public function setCurrentStock(Mage_CatalogInventory_Model_Stock $stock)
-    {
-        Mage::register(self::CURRENT_STOCK, $stock);
+        parent::__construct();
+        $this->setId('stock_tabs');
+        $this->setDestElementId('edit_form');
     }
 }

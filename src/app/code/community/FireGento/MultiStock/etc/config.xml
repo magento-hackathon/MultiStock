@@ -74,7 +74,7 @@
                         <children>
                             <stocks translate="title" module="firegento_multistock">
                                 <title>Stocks</title>
-                                <action>adminhtml/multistock/index</action>
+                                <action>adminhtml/stock/index</action>
                                 <sort_order>10</sort_order>
                             </stocks>
                         </children>

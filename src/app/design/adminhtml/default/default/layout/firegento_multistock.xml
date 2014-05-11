@@ -31,14 +31,14 @@
     <adminhtml_multistock_index>
         <update handle="adminhtml_multistock_ajax" />
         <reference name="root">
-            <block type="firegento_multistock/adminhtml_multistock_grid_container" name="stock.grid_container" />
+            <block type="firegento_multistock/adminhtml_multistock_grid_container" name="multistock.grid_container" />
         </reference>
     </adminhtml_multistock_index>
 
     <adminhtml_multistock_grid>
         <update handle="adminhtml_multistock_ajax" />
         <reference name="root">
-            <block type="firegento_multistock/adminhtml_multistock_grid" name="stock.grid" />
+            <block type="firegento_multistock/adminhtml_multistock_grid" name="multistock.grid" />
         </reference>
     </adminhtml_multistock_grid>
 
@@ -47,4 +47,24 @@
         <remove name="left"/>
         <block type="core/text_list" name="root" output="toHtml" />
     </adminhtml_multistock_ajax>
+
+    <adminhtml_stock_index>
+        <reference name="content">
+            <block type="firegento_multistock/adminhtml_stock" name="stock.grid_container"/>
+        </reference>
+    </adminhtml_stock_index>
+
+    <adminhtml_stock_edit>
+        <reference name="content">
+            <block type="firegento_multistock/adminhtml_stock_edit" name="stock.edit"/>
+        </reference>
+        <reference name="left">
+            <block type="firegento_multistock/adminhtml_stock_edit_tabs" name="stock.tabs">
+                <action method="addTab">
+                    <name>form_section_stock</name>
+                    <block>firegento_multistock/adminhtml_stock_edit_tab_general</block>
+                </action>
+            </block>
+        </reference>
+    </adminhtml_stock_edit>
 </layout>
