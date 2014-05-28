@@ -44,7 +44,8 @@ class FireGento_MultiStock_Block_Adminhtml_Stock_Edit_Tab_General extends Mage_A
             'firegento_multistock_stock_form', array('legend' => $this->__('General'))
         );
         $fieldset->addField(
-            'stock_id', 'label', array('label' => $this->__('Stock ID'), 'name' => 'stock_id')
+            'stock_id', 'text',
+            array('label' => $this->__('Stock ID'), 'name' => 'stock_id', 'class' => 'required-entry', 'required' => true)
         );
 
         $fieldset->addField(
