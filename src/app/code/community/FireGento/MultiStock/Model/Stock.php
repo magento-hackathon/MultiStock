@@ -36,7 +36,7 @@ class FireGento_MultiStock_Model_Stock extends Mage_CatalogInventory_Model_Stock
     public function getId()
     {
         if (!$this->hasData('stock_id')) {
-            $this->setData('stock_id', self::DEFAULT_STOCK_ID);
+            $this->setData('stock_id', Mage::helper('firegento_multistock')->getNextStockId());
         }
 
         return $this->getData('stock_id');
