@@ -67,4 +67,18 @@
             </block>
         </reference>
     </adminhtml_stock_edit>
+    <adminhtml_stock_new>
+        <reference name="content">
+            <block type="firegento_multistock/adminhtml_stock_edit" name="stock.edit"/>
+        </reference>
+        <reference name="left">
+            <block type="firegento_multistock/adminhtml_stock_edit_tabs" name="stock.tabs">
+                <action method="addTab">
+                    <name>form_section_stock</name>
+                    <block>firegento_multistock/adminhtml_stock_edit_tab_general</block>
+                </action>
+            </block>
+        </reference>
+    </adminhtml_stock_new>
+
 </layout>

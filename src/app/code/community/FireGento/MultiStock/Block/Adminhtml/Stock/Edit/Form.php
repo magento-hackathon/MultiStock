@@ -33,10 +33,14 @@ class FireGento_MultiStock_Block_Adminhtml_Stock_Edit_Form extends Mage_Adminhtm
      */
     protected function _prepareForm()
     {
+        $stockId = '';
+        if($this->getRequest()->getActionName() == 'edit') {
+            $stockId = array('stock_id' => $this->getRequest()->getParam('stock_id'));
+        }
         $form = new Varien_Data_Form(
             array(
             'id' => 'edit_form',
-            'action' => $this->getUrl('*/*/save', array('stock_id' => $this->getRequest()->getParam('stock_id'))),
+            'action' => $this->getUrl('*/*/save', $stockId),
             'method' => 'post',
             'enctype' => 'multipart/form-data',
             )

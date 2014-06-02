@@ -38,14 +38,22 @@ class FireGento_MultiStock_Block_Adminhtml_Stock_Edit_Tab_General extends Mage_A
     protected function _prepareForm()
     {
         $data = $this->helper('firegento_multistock')->getCurrentStock();
+
         $form = new Varien_Data_Form();
 
         $fieldset = $form->addFieldset(
             'firegento_multistock_stock_form', array('legend' => $this->__('General'))
         );
+        /*
         $fieldset->addField(
-            'stock_id', 'label', array('label' => $this->__('Stock ID'), 'name' => 'stock_id')
+            'stock_id_text', 'note', array('label' => $this->__('Stock ID'), 'name' => 'stock_id_text', 'text' => $this->helper('firegento_multistock')->getNextStockId())
         );
+        $fieldset->addField(
+            'stock_id', 'hidden',
+            array('value' => $this->helper('firegento_multistock')->getNextStockId())
+        );
+        */
+
 
         $fieldset->addField(
             'stock_name', 'text',
@@ -54,7 +62,9 @@ class FireGento_MultiStock_Block_Adminhtml_Stock_Edit_Tab_General extends Mage_A
         );
 
         $this->setForm($form);
-        $form->setValues($data);
+        if ($data) {
+            $form->setValues($data);
+        }
 
         return parent::_prepareForm();
     }
