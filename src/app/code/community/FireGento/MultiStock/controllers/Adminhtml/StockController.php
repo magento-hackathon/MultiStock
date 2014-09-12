@@ -55,16 +55,26 @@ class FireGento_MultiStock_Adminhtml_StockController extends Mage_Adminhtml_Cont
     }
 
     /**
-     * newAction
+     * Action for creating new stock entries.
      *
      * @return void
      */
     public function newAction()
     {
-        // We just forward the new action to a blank edit form
-        $this->_forward('edit');
-    }
+        $this->_initAction();
 
+        // Get Next AutoInc id
+        $id    = Mage::helper('firegento_multistock')->getNextStockId();
+        $model = Mage::getModel('firegento_multistock/stock');
+
+        $model->setData('stock_id', $id);
+        $this->_title($this->__('New Stock'));
+
+        $this->_initAction()->_addBreadcrumb(
+            $this->__('New Stock'),
+            $this->__('New Stock')
+        )->renderLayout();
+    }
     /**
      * Edit stock entry controller
      *
@@ -108,19 +118,19 @@ class FireGento_MultiStock_Adminhtml_StockController extends Mage_Adminhtml_Cont
      */
     public function saveAction()
     {
+
         $stockId      = $this->getRequest()->getParam('stock_id');
         $redirectBack = $this->getRequest()->getParam('back', false);
         if ($postData = $this->getRequest()->getPost()) {
             /** @var $stock FireGento_MultiStock_Model_Stock */
-            $stock = Mage::getSingleton('firegento_multistock/stock');
+            $stock = Mage::getModel('firegento_multistock/stock');
             $stock->setData($postData);
             //we are in editing mode.
             if ($stockId) {
                 $stock->setId($stockId);
             }
-
+            $stock->save();
             try {
-                $stock->save();
                 Mage::getSingleton('adminhtml/session')->addSuccess($this->__('The stock has been saved.'));
             } catch (Mage_Core_Exception $e) {
                 Mage::getSingleton('adminhtml/session')->addError($e->getMessage());

@@ -49,4 +49,13 @@ class FireGento_MultiStock_Helper_Data extends Mage_Core_Helper_Data
     {
         Mage::register(self::CURRENT_STOCK, $stock);
     }
+
+    public function getNextStockId()
+    {
+        $tableName = 'information_schema.tables';
+        $db = Mage::getConfig()->getResourceConnectionConfig('default_setup')->dbname;
+        $read = Mage::getSingleton('core/resource')->getConnection('core_read');
+        $result =$read->fetchRow("SELECT AUTO_INCREMENT FROM $tableName WHERE table_schema = '$db' AND table_name = '".Mage::getSingleton('core/resource')->getTableName('cataloginventory/stock')."'");
+        return $result['AUTO_INCREMENT'];
+    }
 }
