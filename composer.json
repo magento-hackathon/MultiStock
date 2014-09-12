@@ -4,8 +4,8 @@
   "type": "magento-module",
   "description": "FireGento MultiStock will give you more than one stock and multiple stock items.",
   "homepage": "https://github.com/magento-hackathon/MultiStock",
-  "require": {
-    "magento-hackathon/magento-composer-installer": "*"
+  "suggest": {
+    "magento-hackathon/magento-composer-installer": "Allows to manage this package as a dependency"
   },
   "repositories": [
     {
