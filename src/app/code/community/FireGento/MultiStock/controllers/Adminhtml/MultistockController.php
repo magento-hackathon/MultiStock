@@ -107,7 +107,7 @@ class FireGento_MultiStock_Adminhtml_MultistockController extends Mage_Adminhtml
     }
 
     /**
-     * save alle stocks at once
+     * save all stocks at once
      */
     public function saveAllAction()
     {
